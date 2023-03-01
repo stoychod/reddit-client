@@ -1,5 +1,5 @@
 .post {
- box-shadow: 0 10px 15px -3px; 
+ box-shadow: var(box-shadow); 
 }
 
 .post {
@@ -10,6 +10,7 @@
   display: flex;
 }
 
+.post-container,
 .post-image-container,
 .post-image
 {
@@ -20,4 +21,45 @@
   margin-top: 1rem;
   display: flex;
   justify-content: space-between;
+}
+
+.post-votes-container {
+  margin-right: var(--spacing-3);
+}
+
+.post-votes-container .post-votes-number {
+  margin: var(--spacing-1) 0;
+  font-weight: bold;
+}
+
+.post-title {
+  margin-bottom: var(--spacing-2);
+}
+
+.icon-action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius);
+}
+
+.icon-action-button:hover {
+  background: var(--color-on-hover);
+}
+
+.icon-action {
+  font-size: 1.5rem;
+}
+
+.post-comments-container {
+  display: flex;
+  align-items: center;
+}
+
+.post-comments-container .icon-action {
+  margin-right: var(--spacing-0);
 }
