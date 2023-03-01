@@ -1,0 +1,23 @@
+.post {
+ box-shadow: 0 10px 15px -3px; 
+}
+
+.post {
+  padding: 1.5rem;
+}
+
+.post-wrapper {
+  display: flex;
+}
+
+.post-image-container,
+.post-image
+{
+  width: 100%;
+}
+
+.post-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
