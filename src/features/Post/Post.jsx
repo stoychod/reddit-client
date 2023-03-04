@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { TiArrowUpOutline, TiArrowDownOutline, TiMessage } from 'react-icons/ti'
-import { getSubreddit } from '../../../utils/redditAPI'
+import { extractGalleryImgUrl } from '../../utils/utils'
 import "./Post.css"
 
 const Post = ({ post }) => {
 
-  const { title, author, num_comments: commentsCount, score, url } = post;
+  let { title, author, num_comments: commentsCount, score, url, is_gallery } = post;
   // const title = "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.";
   // const author = "AuthorName";
   // const commentsCount = 40;
@@ -15,6 +15,10 @@ const Post = ({ post }) => {
   // useEffect(() => {
   //   console.log(getSubreddit("home"));
   // })
+
+  if (is_gallery) {
+    url = extractGalleryImgUrl(post.media_metadata);
+  }
 
   return (
     <div className="post">
