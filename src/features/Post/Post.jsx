@@ -1,32 +1,40 @@
-import { useEffect } from 'react'
-import { TiArrowUpOutline, TiArrowDownOutline, TiMessage } from 'react-icons/ti'
-import { decode } from 'html-entities'
-import parse from 'html-react-parser'
-import { extractGalleryImgUrl } from '../../utils/utils'
-import Image from '../../components/Image'
-import "./Post.css"
+import {
+  TiArrowUpOutline,
+  TiArrowDownOutline,
+  TiMessage,
+} from "react-icons/ti";
+import { decode } from "html-entities";
+import parse from "html-react-parser";
+import { extractGalleryImgUrl } from "../../utils/utils";
+import Image from "../../components/Image";
+import "./Post.css";
 
 const Post = ({ post }) => {
+  let {
+    title,
+    author,
+    score,
+    url,
+    post_hint,
+    gallery_data,
+    media_metadata,
+    num_comments: commentsCount,
+    is_gallery: imageGallery,
+    selftext_html: encodedHtml,
+  } = post;
 
-  let { title, author, num_comments: commentsCount, score, url, is_gallery: imageGallery, selftext_html: encodedHtml, post_hint } = post;
-  // const title = "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.";
-  // const author = "AuthorName";
-  // const commentsCount = 40;
-  // const votesNumber = "8.8k"
-
-
-  // useEffect(() => {
-  //   console.log(getSubreddit("home"));
-  // })
   let postContent;
 
   if (post_hint && post_hint === "image") {
-    console.log("image")
-    postContent = < Image url={url} />;
+    // post content is a single image
+    postContent = <Image url={url} />;
   } else if (imageGallery) {
-    url = extractGalleryImgUrl(post.media_metadata);
-    postContent = < Image url={url} />;
+    // post content is a gallery of a few images
+    const encodedUrl = extractGalleryImgUrl(gallery_data, media_metadata);
+    url = decode(encodedUrl);
+    postContent = <Image url={url} />;
   } else if (encodedHtml) {
+    // post content is html text
     // remove html entities
     const decodedHtml = decode(encodedHtml);
     // parse html and convert it to a react element
@@ -60,7 +68,7 @@ const Post = ({ post }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Post;
