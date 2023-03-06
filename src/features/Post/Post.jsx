@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { TiArrowUpOutline, TiArrowDownOutline, TiMessage } from 'react-icons/ti'
+import { decode } from 'html-entities'
+import parse from 'html-react-parser'
 import { extractGalleryImgUrl } from '../../utils/utils'
 import "./Post.css"
 
 const Post = ({ post }) => {
 
-  let { title, author, num_comments: commentsCount, score, url, is_gallery } = post;
+  let { title, author, num_comments: commentsCount, score, url, is_gallery: imageGallery, selftext_html: postText } = post;
   // const title = "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.";
   // const author = "AuthorName";
   // const commentsCount = 40;
@@ -15,8 +17,13 @@ const Post = ({ post }) => {
   // useEffect(() => {
   //   console.log(getSubreddit("home"));
   // })
+  let postContent;
 
-  if (is_gallery) {
+  if (postText) {
+    // console.log(postText)
+    // remove html entities
+    postContent = decode(postText);
+  } else if (imageGallery) {
     url = extractGalleryImgUrl(post.media_metadata);
   }
 
@@ -34,6 +41,7 @@ const Post = ({ post }) => {
         </div>
         <div className="post-container">
           <h3 className="post-title">{title}</h3>
+          {postContent && parse(postContent)}
           <div className="post-image-container">
             <img src={url} className="post-image" />
           </div>
