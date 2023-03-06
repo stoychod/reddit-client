@@ -3,11 +3,12 @@ import { TiArrowUpOutline, TiArrowDownOutline, TiMessage } from 'react-icons/ti'
 import { decode } from 'html-entities'
 import parse from 'html-react-parser'
 import { extractGalleryImgUrl } from '../../utils/utils'
+import Image from '../../components/Image'
 import "./Post.css"
 
 const Post = ({ post }) => {
 
-  let { title, author, num_comments: commentsCount, score, url, is_gallery: imageGallery, selftext_html: postText } = post;
+  let { title, author, num_comments: commentsCount, score, url, is_gallery: imageGallery, selftext_html: encodedHtml, post_hint } = post;
   // const title = "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.";
   // const author = "AuthorName";
   // const commentsCount = 40;
@@ -19,12 +20,17 @@ const Post = ({ post }) => {
   // })
   let postContent;
 
-  if (postText) {
-    // console.log(postText)
-    // remove html entities
-    postContent = decode(postText);
+  if (post_hint && post_hint === "image") {
+    console.log("image")
+    postContent = < Image url={url} />;
   } else if (imageGallery) {
     url = extractGalleryImgUrl(post.media_metadata);
+    postContent = < Image url={url} />;
+  } else if (encodedHtml) {
+    // remove html entities
+    const decodedHtml = decode(encodedHtml);
+    // parse html and convert it to a react element
+    postContent = parse(decodedHtml);
   }
 
   return (
@@ -41,10 +47,7 @@ const Post = ({ post }) => {
         </div>
         <div className="post-container">
           <h3 className="post-title">{title}</h3>
-          {postContent && parse(postContent)}
-          <div className="post-image-container">
-            <img src={url} className="post-image" />
-          </div>
+          {postContent}
           <div className="post-footer">
             <span className="post-comments-container">
               <button className="icon-action-button">
