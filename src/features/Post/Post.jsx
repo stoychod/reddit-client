@@ -7,6 +7,7 @@ import { decode } from "html-entities";
 import parse from "html-react-parser";
 import { extractGalleryImgUrl } from "../../utils/utils";
 import Image from "../../components/Image";
+import Video from "../../components/Video";
 import "./Post.css";
 
 const Post = ({ post }) => {
@@ -18,7 +19,9 @@ const Post = ({ post }) => {
     post_hint,
     gallery_data,
     media_metadata,
+    secure_media,
     num_comments: commentsCount,
+    is_video: video,
     is_gallery: imageGallery,
     selftext_html: encodedHtml,
   } = post;
@@ -39,6 +42,9 @@ const Post = ({ post }) => {
     const decodedHtml = decode(encodedHtml);
     // parse html and convert it to a react element
     postContent = parse(decodedHtml);
+  } else if (video) {
+    const src = secure_media.reddit_video.fallback_url;
+    postContent = <Video src={src} />;
   }
 
   return (
