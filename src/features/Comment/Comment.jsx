@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import "./Comment.css";
 
 const Comment = ({ comment }) => {
   return (
