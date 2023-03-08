@@ -9,6 +9,8 @@ import { extractGalleryImgUrl } from "../../utils/utils";
 import Image from "../../components/Image";
 import Video from "../../components/Video";
 import "./Post.css";
+import Comment from "../Comment/Comment";
+import { useGetCommentsQuery } from "../api/apiSlice";
 
 const Post = ({ post }) => {
   let {
@@ -20,6 +22,7 @@ const Post = ({ post }) => {
     gallery_data,
     media_metadata,
     secure_media,
+    permalink,
     num_comments: commentsCount,
     is_video: video,
     is_gallery: imageGallery,
@@ -47,6 +50,21 @@ const Post = ({ post }) => {
     postContent = <Video src={src} />;
   }
 
+  const { data, isLoading, isSuccess, isError, error } =
+    useGetCommentsQuery(permalink);
+
+  let comments;
+
+  if (isLoading) {
+    comments = "Loading...";
+  } else if (isSuccess) {
+    comments = data.map((comment) => {
+      return <Comment comment={comment.data} />;
+    });
+  } else if (isError) {
+    comments = <div>{error.toString()}</div>;
+  }
+
   return (
     <div className="post">
       <div className="post-wrapper">
@@ -71,6 +89,7 @@ const Post = ({ post }) => {
             </span>
             <span className="author-name">{author}</span>
           </div>
+          {comments}
         </div>
       </div>
     </div>
