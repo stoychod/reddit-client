@@ -31,6 +31,9 @@
 
 .post-votes-container {
   margin-right: var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .post-votes-container .post-votes-number {
