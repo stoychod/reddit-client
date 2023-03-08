@@ -69,3 +69,7 @@
 .post-comments-container .icon-action {
   margin-right: var(--spacing-0);
 }
+
+.comments-visible {
+  color: var(--color-branding);
+}

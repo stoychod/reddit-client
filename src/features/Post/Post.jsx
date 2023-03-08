@@ -71,7 +71,10 @@ const Post = ({ post }) => {
             <span className="post-comments-container">
               <button
                 onClick={() => setShowComments(!showComments)}
-                className="icon-action-button"
+                className={
+                  "icon-action-button" +
+                  (showComments ? " comments-visible" : "")
+                }
               >
                 <TiMessage className="icon-action" />
               </button>
