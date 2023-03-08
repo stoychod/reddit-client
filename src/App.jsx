@@ -1,13 +1,15 @@
-import './App.css'
-import { PostsList } from './features/PostsList/PostsList'
+import "./App.css";
+import { PostsList } from "./features/PostsList/PostsList";
 
 function App() {
-
   return (
-    <div className="App">
-      <PostsList />
-    </div>
-  )
+    <>
+      <main>
+        <PostsList />
+      </main>
+      <aside></aside>
+    </>
+  );
 }
 
-export default App
+export default App;
