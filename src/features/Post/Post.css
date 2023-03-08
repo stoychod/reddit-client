@@ -1,9 +1,15 @@
 .post {
- box-shadow: var(box-shadow); 
+  background: var(--color-foreground);
+  box-shadow: var(--box-shadow);
+  margin-bottom: var(--spacing-4);
+  border-radius: var(--radius);
+  padding: var(--spacing-3);
+  transition: box-shadow 0.1s ease-in;
+  color: var(--color-text-secondary);
 }
 
-.post {
-  padding: 1.5rem;
+.post:hover {
+  box-shadow: var(--box-shadow-hover);
 }
 
 .post-wrapper {
