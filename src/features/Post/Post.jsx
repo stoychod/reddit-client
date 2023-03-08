@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   TiArrowUpOutline,
   TiArrowDownOutline,
@@ -9,10 +10,11 @@ import { extractGalleryImgUrl } from "../../utils/utils";
 import Image from "../../components/Image";
 import Video from "../../components/Video";
 import "./Post.css";
-import Comment from "../Comment/Comment";
-import { useGetCommentsQuery } from "../api/apiSlice";
+import CommentsList from "../CommentsList/CommentsList";
 
 const Post = ({ post }) => {
+  const [showComments, setShowComments] = useState(false);
+
   let {
     title,
     author,
@@ -50,21 +52,6 @@ const Post = ({ post }) => {
     postContent = <Video src={src} />;
   }
 
-  const { data, isLoading, isSuccess, isError, error } =
-    useGetCommentsQuery(permalink);
-
-  let comments;
-
-  if (isLoading) {
-    comments = "Loading...";
-  } else if (isSuccess) {
-    comments = data.map((comment) => {
-      return <Comment comment={comment.data} />;
-    });
-  } else if (isError) {
-    comments = <div>{error.toString()}</div>;
-  }
-
   return (
     <div className="post">
       <div className="post-wrapper">
@@ -82,14 +69,17 @@ const Post = ({ post }) => {
           {postContent}
           <div className="post-footer">
             <span className="post-comments-container">
-              <button className="icon-action-button">
+              <button
+                onClick={() => setShowComments(!showComments)}
+                className="icon-action-button"
+              >
                 <TiMessage className="icon-action" />
               </button>
               {commentsCount}
             </span>
             <span className="author-name">{author}</span>
           </div>
-          {comments}
+          {showComments && <CommentsList permalink={permalink} />}
         </div>
       </div>
     </div>
