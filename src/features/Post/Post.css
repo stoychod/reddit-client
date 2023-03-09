@@ -43,6 +43,13 @@
 
 .post-title {
   margin-bottom: var(--spacing-2);
+  font-size: 1.17em;
+  font-weight: 700;
+  color: var(--color-text-header)
+}
+
+.icon-action {
+  font-size: 1.5rem;
 }
 
 .icon-action-button {
@@ -56,12 +63,32 @@
   border-radius: var(--radius);
 }
 
-.icon-action-button:hover {
-  background: var(--color-on-hover);
+.post-votes-number.vote-up {
+  color: var(--color-success) !important;
 }
 
-.icon-action {
-  font-size: 1.5rem;
+.post-votes-number.vote-down {
+  color: var(--color-alert) !important;
+}
+
+.post-vote-up:hover {
+  color: var(--color-success) !important;
+}
+
+.post-vote-up.active {
+  color: var(--color-success) !important;
+}
+
+.post-vote-down:hover {
+  color: var(--color-alert) !important;
+}
+
+.post-vote-down.active {
+  color: var(--color-alert) !important;
+}
+
+.icon-action-button:hover {
+  background: var(--color-on-hover);
 }
 
 .post-comments-container {

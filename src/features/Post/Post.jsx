@@ -2,6 +2,8 @@ import { useState } from "react";
 import {
   TiArrowUpOutline,
   TiArrowDownOutline,
+  TiArrowUpThick,
+  TiArrowDownThick,
   TiMessage,
 } from "react-icons/ti";
 import { decode } from "html-entities";
@@ -14,6 +16,29 @@ import CommentsList from "../CommentsList/CommentsList";
 
 const Post = ({ post }) => {
   const [showComments, setShowComments] = useState(false);
+  const [vote, setVote] = useState("neutral");
+
+  const onHandleVlote = (newVote) => {
+    if (newVote === vote) {
+      setVote("neutral");
+    } else {
+      setVote(newVote);
+    }
+  };
+
+  const renderUpVoteIcon = () => {
+    if (vote === "vote-up") {
+      return <TiArrowUpThick className="icon-action" />;
+    }
+    return <TiArrowUpOutline className="icon-action" />;
+  };
+
+  const renderDownVoteIcon = () => {
+    if (vote === "vote-down") {
+      return <TiArrowDownThick className="icon-action" />;
+    }
+    return <TiArrowDownOutline className="icon-action" />;
+  };
 
   let {
     title,
@@ -56,12 +81,24 @@ const Post = ({ post }) => {
     <div className="post">
       <div className="post-wrapper">
         <div className="post-votes-container">
-          <button className=" icon-action-button post-vote-up">
-            <TiArrowUpOutline className="icon-action" />
+          <button
+            onClick={() => onHandleVlote("vote-up")}
+            className={
+              "icon-action-button post-vote-up" +
+              (vote === "vote-up" ? " active" : "")
+            }
+          >
+            {renderUpVoteIcon()}
           </button>
-          <p className="post-votes-number">{score}</p>
-          <button className="icon-action-button post-vote-down">
-            <TiArrowDownOutline className="icon-action" />
+          <p className={"post-votes-number " + vote}>{score}</p>
+          <button
+            onClick={() => onHandleVlote("vote-down")}
+            className={
+              "icon-action-button post-vote-down" +
+              (vote === "vote-down" ? " active" : "")
+            }
+          >
+            {renderDownVoteIcon()}
           </button>
         </div>
         <div className="post-container">
