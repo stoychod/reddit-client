@@ -8,7 +8,7 @@ import {
 } from "react-icons/ti";
 import { decode } from "html-entities";
 import parse from "html-react-parser";
-import { extractGalleryImgUrl } from "../../utils/utils";
+import { extractGalleryImgUrl, formatNumber } from "../../utils/utils";
 import Image from "../../components/Image";
 import Video from "../../components/Video";
 import "./Post.css";
@@ -90,7 +90,7 @@ const Post = ({ post }) => {
           >
             {renderUpVoteIcon()}
           </button>
-          <p className={"post-votes-number " + vote}>{score}</p>
+          <p className={"post-votes-number " + vote}>{formatNumber(score)}</p>
           <button
             onClick={() => onHandleVlote("vote-down")}
             className={
@@ -115,7 +115,7 @@ const Post = ({ post }) => {
               >
                 <TiMessage className="icon-action" />
               </button>
-              {commentsCount}
+              {formatNumber(commentsCount)}
             </span>
             <span className="author-name">{author}</span>
           </div>
