@@ -13,6 +13,7 @@ import Image from "../../components/Image";
 import Video from "../../components/Video";
 import "./Post.css";
 import CommentsList from "../CommentsList/CommentsList";
+import ReactTimeAgo from "react-time-ago";
 
 const Post = ({ post }) => {
   const [showComments, setShowComments] = useState(false);
@@ -117,7 +118,8 @@ const Post = ({ post }) => {
               </button>
               {formatNumber(commentsCount)}
             </span>
-            <span className="author-name">{author}</span>
+            <span className="author-name">{`Posted by ${author}`}</span>
+            <span><ReactTimeAgo date={post.created_utc * 1000} locale="en-US" /></span>
           </div>
           {showComments && <CommentsList permalink={permalink} />}
         </div>

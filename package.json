@@ -12,11 +12,13 @@
     "@reduxjs/toolkit": "^1.9.3",
     "html-entities": "^2.3.3",
     "html-react-parser": "^3.0.11",
+    "javascript-time-ago": "^2.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.5",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "react-time-ago": "^7.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
