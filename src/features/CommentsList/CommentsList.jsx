@@ -11,6 +11,9 @@ const CommentsList = ({ permalink }) => {
     comments = "Loading...";
   } else if (isSuccess) {
     comments = data.map((comment) => {
+      if (comment.kind === "more") {
+        return;
+      }
       return <Comment key={comment.data.id} comment={comment.data} />;
     });
   } else if (isError) {
