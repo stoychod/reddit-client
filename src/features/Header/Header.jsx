@@ -1,7 +1,12 @@
 import { BsReddit } from "react-icons/bs";
 import "./Header.css";
+import { useSelector, useDispatch } from "react-redux";
+import { setSearchTerm, selectSearchTerm } from "./searchTermSlice";
 
 const Header = () => {
+  const searchTerm = useSelector(selectSearchTerm);
+  const dispatch = useDispatch();
+
   return (
     <header>
       <div className="reddit-logo">
@@ -9,7 +14,12 @@ const Header = () => {
         <p>Reddit</p>
       </div>
       <form className="search-form">
-        <input type="text" placeholder="Search" value="" />
+        <input
+          onChange={({ target }) => dispatch(setSearchTerm(target.value))}
+          type="text"
+          placeholder="Search posts"
+          value={searchTerm}
+        />
       </form>
       <div></div>
     </header>
