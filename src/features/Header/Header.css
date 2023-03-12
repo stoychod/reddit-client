@@ -6,6 +6,12 @@ header {
   display: flex;
   align-items: center;
   padding: 0 var(--spacing-5);
+  position: fixed;
+  top: 0px;
+  /* width 100% has a wired problem where the right side of the header */
+  /* overflows the indow by -128px */
+  left: 0px;
+  right: 0px;
 }
 
 header>* {
