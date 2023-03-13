@@ -18,10 +18,10 @@ const SubredditsList = () => {
   }
 
   return (
-    <>
-      <h2>Stbreddists</h2>
+    <div className="subreddits-list">
+      <h2>Subreddists</h2>
       {subreddits}
-    </>
+    </div>
   );
 };
 
