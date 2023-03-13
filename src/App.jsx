@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./features/Header/Header";
-import { PostsList } from "./features/PostsList/PostsList";
+import PostsList from "./features/PostsList/PostsList";
 import SubredditsList from "./features/SubredditsList/SubredditsList";
 
 function App() {
