@@ -2,15 +2,18 @@ import Post from "../Post/Post";
 import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../Header/searchTermSlice";
+import { selectCurrntSubreddit } from "../Subreddit/currentSubredditSlice";
 
 const PostsList = () => {
+  const currentSubreddit = useSelector(selectCurrntSubreddit);
+
   let {
     data: posts,
     isLoading,
     isSuccess,
     isError,
     error,
-  } = useGetPostsQuery("pics");
+  } = useGetPostsQuery(currentSubreddit);
 
   const searchTerm = useSelector(selectSearchTerm);
 

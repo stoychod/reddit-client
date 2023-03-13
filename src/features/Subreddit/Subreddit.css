@@ -33,11 +33,11 @@ background: none;
   border-radius: var(--radius);
 }
 
-.selected-subreddit button {
+.current-subreddit button {
   color: var(--color-branding) !important;
 }
 
-.selected-subreddit {
+.current-subreddit {
   border-left: 5px solid var(--color-branding);
   background: var(--color-branding-transparent);
 }
