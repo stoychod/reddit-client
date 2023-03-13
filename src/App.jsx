@@ -1,15 +1,20 @@
 import "./App.css";
 import Header from "./features/Header/Header";
 import { PostsList } from "./features/PostsList/PostsList";
+import SubredditsList from "./features/SubredditsList/SubredditsList";
 
 function App() {
   return (
     <>
-      <Header />
+      <header>
+        <Header />
+      </header>
       <main>
         <PostsList />
       </main>
-      <aside></aside>
+      <aside>
+        <SubredditsList />
+      </aside>
     </>
   );
 }

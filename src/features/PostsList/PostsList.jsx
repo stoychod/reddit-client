@@ -3,7 +3,7 @@ import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../Header/searchTermSlice";
 
-export const PostsList = () => {
+const PostsList = () => {
   let {
     data: posts,
     isLoading,
@@ -40,3 +40,5 @@ export const PostsList = () => {
   // return <Post />;
   return content;
 };
+
+export default PostsList;

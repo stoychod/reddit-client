@@ -8,7 +8,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   return (
-    <header>
+    <>
       <div className="reddit-logo">
         <BsReddit className="reddit-icon" />
         <p>Reddit</p>
@@ -22,7 +22,7 @@ const Header = () => {
         />
       </form>
       <div></div>
-    </header>
+    </>
   );
 };
 
