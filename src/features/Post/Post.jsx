@@ -102,7 +102,9 @@ const Post = ({ post }) => {
         </div>
         <div className="post-container">
           <h3 className="post-title">{title}</h3>
-          {postContent}
+          <div className="post-body">
+            {postContent}
+          </div>
           <div className="post-footer">
             <span className="post-comments-container">
               <button

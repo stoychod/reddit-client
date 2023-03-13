@@ -23,6 +23,11 @@
   width: 100%;
 }
 
+.post-video-container {
+  display: flex;
+  justify-content: center;
+}
+
 .post-footer {
   font-size: 1.2rem;
   margin-top: 1.6rem;
