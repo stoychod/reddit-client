@@ -7,7 +7,7 @@ import {
   TiMessage,
 } from "react-icons/ti";
 import { decode } from "html-entities";
-import parse from "html-react-parser";
+import ReactMarkdown from "react-markdown";
 import { extractGalleryImgUrl, formatNumber } from "../../utils/utils";
 import Image from "../../components/Image";
 import Video from "../../components/Video";
@@ -44,6 +44,7 @@ const Post = ({ post }) => {
   let {
     title,
     author,
+    selftext,
     score,
     url,
     post_hint,
@@ -54,7 +55,6 @@ const Post = ({ post }) => {
     num_comments: commentsCount,
     is_video: video,
     is_gallery: imageGallery,
-    selftext_html: encodedHtml,
   } = post;
 
   let postContent;
@@ -67,12 +67,10 @@ const Post = ({ post }) => {
     const encodedUrl = extractGalleryImgUrl(gallery_data, media_metadata);
     url = decode(encodedUrl);
     postContent = <Image url={url} />;
-  } else if (encodedHtml) {
-    // post content is html text
-    // remove html entities
-    const decodedHtml = decode(encodedHtml);
-    // parse html and convert it to a react element
-    postContent = parse(decodedHtml);
+  } else if (selftext) {
+    // post content is markdown formated text
+    // parse markdown and convert it to a react element
+    postContent = <ReactMarkdown children={selftext} />;
   } else if (video) {
     const src = secure_media.reddit_video.fallback_url;
     postContent = <Video src={src} />;
@@ -119,7 +117,9 @@ const Post = ({ post }) => {
               {formatNumber(commentsCount)}
             </span>
             <span className="author-name">{`Posted by ${author}`}</span>
-            <span><ReactTimeAgo date={post.created_utc * 1000} locale="en-US" /></span>
+            <span>
+              <ReactTimeAgo date={post.created_utc * 1000} locale="en-US" />
+            </span>
           </div>
           {showComments && <CommentsList permalink={permalink} />}
         </div>
