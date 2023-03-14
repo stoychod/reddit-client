@@ -1,5 +1,6 @@
 import { useGetCommentsQuery } from "../api/apiSlice";
 import Comment from "../Comment/Comment";
+import { getRandomInt } from "../../utils/utils";
 
 const CommentsList = ({ permalink }) => {
   const { data, isLoading, isSuccess, isError, error } =
@@ -8,7 +9,14 @@ const CommentsList = ({ permalink }) => {
   let comments;
 
   if (isLoading) {
-    comments = "Loading...";
+    // comments = "Loading...";
+    const loadingComments = Array(getRandomInt(3, 15))
+      .fill(0)
+      .map((item, index) => {
+        return <Comment key={index} />;
+      });
+
+    return loadingComments;
   } else if (isSuccess) {
     comments = data.map((comment) => {
       if (comment.kind === "more") {
