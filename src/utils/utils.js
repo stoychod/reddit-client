@@ -8,7 +8,7 @@ export const extractGalleryImgUrl = (gallery_data, media_metadata) => {
 };
 
 // JavaScript convert numbers to K M B. Format a number thousand or more 1K
-// https://www.html-code-generator.com/javascript/shorten-long-numbers 
+// https://www.html-code-generator.com/javascript/shorten-long-numbers
 
 export const formatNumber = (num) => {
   num = num.toString().replace(/[^0-9.]/g, "");
@@ -33,4 +33,11 @@ export const formatNumber = (num) => {
     (num / si[index].v).toFixed(1).replace(/\.0+$|(\.[0-9]*[1-9])0+$/, "$1") +
     si[index].s
   );
+};
+
+// generate a random value between two numbers min and max included
+// https://stackoverflow.com/a/7228322
+
+export const getRandomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 };
