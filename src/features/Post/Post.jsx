@@ -41,38 +41,25 @@ const Post = ({ post }) => {
     return <TiArrowDownOutline className="icon-action" />;
   };
 
-  let {
-    title,
-    author,
-    selftext,
-    score,
-    url,
-    post_hint,
-    gallery_data,
-    media_metadata,
-    secure_media,
-    permalink,
-    num_comments: commentsCount,
-    is_video: video,
-    is_gallery: imageGallery,
-  } = post;
-
   let postContent;
 
-  if (post_hint && post_hint === "image") {
+  if (post.post_hint && post.post_hint === "image") {
     // post content is a single image
-    postContent = <Image url={url} />;
-  } else if (imageGallery) {
+    postContent = <Image url={post.url} />;
+  } else if (post.is_gallery) {
     // post content is a gallery of a few images
-    const encodedUrl = extractGalleryImgUrl(gallery_data, media_metadata);
+    const encodedUrl = extractGalleryImgUrl(
+      post.gallery_data,
+      post.media_metadata
+    );
     url = decode(encodedUrl);
     postContent = <Image url={url} />;
-  } else if (selftext) {
+  } else if (post.selftext) {
     // post content is markdown formated text
     // parse markdown and convert it to a react element
-    postContent = <ReactMarkdown children={selftext} />;
-  } else if (video) {
-    const src = secure_media.reddit_video.fallback_url;
+    postContent = <ReactMarkdown children={post.selftext} />;
+  } else if (post.is_video) {
+    const src = post.secure_media.reddit_video.fallback_url;
     postContent = <Video src={src} />;
   }
 
@@ -89,7 +76,9 @@ const Post = ({ post }) => {
           >
             {renderUpVoteIcon()}
           </button>
-          <p className={"post-votes-number " + vote}>{formatNumber(score)}</p>
+          <p className={"post-votes-number " + vote}>
+            {formatNumber(post.score)}
+          </p>
           <button
             onClick={() => onHandleVlote("vote-down")}
             className={
@@ -101,10 +90,8 @@ const Post = ({ post }) => {
           </button>
         </div>
         <div className="post-container">
-          <h3 className="post-title">{title}</h3>
-          <div className="post-body">
-            {postContent}
-          </div>
+          <h3 className="post-title">{post.title}</h3>
+          <div className="post-body">{postContent}</div>
           <div className="post-footer">
             <span className="post-comments-container">
               <button
@@ -116,14 +103,14 @@ const Post = ({ post }) => {
               >
                 <TiMessage className="icon-action" />
               </button>
-              {formatNumber(commentsCount)}
+              {formatNumber(post.num_comments)}
             </span>
-            <span className="author-name">{`Posted by ${author}`}</span>
+            <span className="author-name">{`Posted by ${post.author}`}</span>
             <span>
               <ReactTimeAgo date={post.created_utc * 1000} locale="en-US" />
             </span>
           </div>
-          {showComments && <CommentsList permalink={permalink} />}
+          {showComments && <CommentsList permalink={post.permalink} />}
         </div>
       </div>
     </div>
