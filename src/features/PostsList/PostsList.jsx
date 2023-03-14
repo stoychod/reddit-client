@@ -3,6 +3,7 @@ import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../Header/searchTermSlice";
 import { selectCurrntSubreddit } from "../Subreddit/currentSubredditSlice";
+import { getRandomInt } from "../../utils/utils";
 
 const PostsList = () => {
   const currentSubreddit = useSelector(selectCurrntSubreddit);
@@ -26,7 +27,14 @@ const PostsList = () => {
   let content;
 
   if (isLoading) {
-    content = "Loading...";
+    // content = "Loading...";
+    const loadingPosts = Array(getRandomInt(3, 7))
+      .fill(0)
+      .map((item, index) => {
+        return <Post key={index} />;
+      });
+    // console.log(loadingPosts);
+    return loadingPosts;
   } else if (isSuccess) {
     if (searchTerm !== "") {
       posts = filterPosts(posts, searchTerm);

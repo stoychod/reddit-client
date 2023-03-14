@@ -14,8 +14,11 @@ import Video from "../../components/Video";
 import "./Post.css";
 import CommentsList from "../CommentsList/CommentsList";
 import ReactTimeAgo from "react-time-ago";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { getRandomInt } from "../../utils/utils";
 
-const Post = ({ post }) => {
+const Post = ({ post = {} }) => {
   const [showComments, setShowComments] = useState(false);
   const [vote, setVote] = useState("neutral");
 
@@ -52,7 +55,7 @@ const Post = ({ post }) => {
       post.gallery_data,
       post.media_metadata
     );
-    url = decode(encodedUrl);
+    const url = decode(encodedUrl);
     postContent = <Image url={url} />;
   } else if (post.selftext) {
     // post content is markdown formated text
@@ -77,7 +80,7 @@ const Post = ({ post }) => {
             {renderUpVoteIcon()}
           </button>
           <p className={"post-votes-number " + vote}>
-            {formatNumber(post.score)}
+            {post.score ? formatNumber(post.score) : <Skeleton width="3ch" />}
           </p>
           <button
             onClick={() => onHandleVlote("vote-down")}
@@ -90,8 +93,12 @@ const Post = ({ post }) => {
           </button>
         </div>
         <div className="post-container">
-          <h3 className="post-title">{post.title}</h3>
-          <div className="post-body">{postContent}</div>
+          <h3 className="post-title">
+            {post.title || <Skeleton width={`${getRandomInt(40, 80)}%`} />}
+          </h3>
+          <div className="post-body">
+            {postContent || <Skeleton height={`${getRandomInt(250, 500)}px`} />}
+          </div>
           <div className="post-footer">
             <span className="post-comments-container">
               <button
@@ -103,11 +110,25 @@ const Post = ({ post }) => {
               >
                 <TiMessage className="icon-action" />
               </button>
-              {formatNumber(post.num_comments)}
+              {post.num_comments ? (
+                formatNumber(post.num_comments)
+              ) : (
+                <Skeleton width="3ch" />
+              )}
             </span>
-            <span className="author-name">{`Posted by ${post.author}`}</span>
+            <span className="author-name">
+              {post.author ? (
+                `Posted by ${post.author}`
+              ) : (
+                <Skeleton width={`${getRandomInt(100, 150)}px`} />
+              )}
+            </span>
             <span>
-              <ReactTimeAgo date={post.created_utc * 1000} locale="en-US" />
+              {post.created_utc ? (
+                <ReactTimeAgo date={post.created_utc * 1000} locale="en-US" />
+              ) : (
+                <Skeleton width={`${getRandomInt(9, 14)}ch`} />
+              )}
             </span>
           </div>
           {showComments && <CommentsList permalink={post.permalink} />}
