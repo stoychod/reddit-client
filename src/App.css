@@ -41,10 +41,3 @@ body {
   color: var(--color-text-body);
 }
 
-p {
-  margin: 0;
-}
- 
-main {
-  margin-top: 8rem;
-}

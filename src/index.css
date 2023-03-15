@@ -7,3 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
 }
+
+/* .subreddits-list { */
+/*   position: sticky; */
+/*   top: 8rem; */
+/* } */
+
+#root {
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+  /* grid-gap: var(--spacing-2); */
+}
+
+main {
+  grid-column: 1/4;
+}
+
+a {
+  color: var(--color-text-link);
+}
+
+/* header { */
+/*   grid-column: 1/; */
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* grid-gap: var(--spacing-2); */
+  /* align-content: center; */
+/* } */

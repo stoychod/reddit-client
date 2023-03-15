@@ -1,7 +1,8 @@
 .post {
   background: var(--color-foreground);
   box-shadow: var(--box-shadow);
-  margin-bottom: var(--spacing-4);
+  margin: var(--spacing-2);
+  margin-bottom: var(--spacing-3);
   border-radius: var(--radius);
   padding: var(--spacing-2);
   transition: box-shadow 0.1s ease-in;

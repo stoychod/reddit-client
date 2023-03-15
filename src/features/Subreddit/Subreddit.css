@@ -1,8 +1,8 @@
 .subreddits-list {
-  margin: var(--spacing-3);
+  margin: var(--spacing-2);
+  margin-left: 0;
   background: var(--color-foreground);
   box-shadow: var(--box-shadow);
-  margin-bottom: var(--spacing-4);
   border-radius: var(--radius);
   padding: var(--spacing-3);
   transition: box-shadow 0.1s ease-in;
