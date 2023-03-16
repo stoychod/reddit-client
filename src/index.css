@@ -11,22 +11,66 @@ body {
 /* .subreddits-list { */
 /*   position: sticky; */
 /*   top: 8rem; */
+/*   overflow: auto; */
 /* } */
 
 #root {
   display: grid;
-  grid-template-columns:repeat(4, 1fr);
+  grid-template-columns: 1fr;
   /* grid-gap: var(--spacing-2); */
 }
 
-main {
-  grid-column: 1/4;
+/* main { */
+/*   grid-column: 2/5; */
+/* } */
+
+aside {
+  justify-self: start;
 }
 
 a {
   color: var(--color-text-link);
 }
 
+@media only screen and (min-width: 680px) {
+  #root {
+    grid-template-columns:repeat(4, 1fr);
+  }
+
+  main {
+    grid-column: 1/4;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #root {
+    grid-template-columns:repeat(5, 1fr);
+  }
+
+  main {
+    grid-column: 2/5;
+  }
+}
+
+@media only screen and (min-width: 1600px) {
+  #root {
+    grid-template-columns:repeat(7, 1fr);
+  }
+
+  main {
+    grid-column: 3/6;
+  }
+}
+
+@media only screen and (min-width: 2400px) {
+  #root {
+    grid-template-columns:repeat(9, 1fr);
+  }
+
+  main {
+    grid-column: 4/7;
+  }
+}
 /* header { */
 /*   grid-column: 1/; */
   /* display: grid; */
