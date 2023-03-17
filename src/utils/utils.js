@@ -41,3 +41,21 @@ export const formatNumber = (num) => {
 export const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
+
+// a simple throttle implementation
+// https://stackoverflow.com/questions/27078285/simple-throttle-in-javascript
+export const throttle = (callback, limit) => {
+  let waiting = false; // Initially, we're not waiting
+  return function () {
+    // We return a throttled function
+    if (!waiting) {
+      // If we're not waiting
+      callback.apply(this, arguments); // Execute users function
+      waiting = true; // Prevent future invocations
+      setTimeout(function () {
+        // After a period of time
+        waiting = false; // And allow future invocations
+      }, limit);
+    }
+  };
+};
