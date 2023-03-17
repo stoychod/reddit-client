@@ -1,8 +1,8 @@
 import Post from "../Post/Post";
 import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
-import { selectSearchTerm } from "../Header/searchTermSlice";
-import { selectCurrntSubreddit } from "../Subreddit/currentSubredditSlice";
+import { selectSearchTerm } from "../../app/searchTermSlice";
+import { selectCurrntSubreddit } from "../../app/currentSubredditSlice";
 import { getRandomInt } from "../../utils/utils";
 
 const PostsList = () => {

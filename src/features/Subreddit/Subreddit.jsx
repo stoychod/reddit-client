@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectCurrntSubreddit,
   setCurrentSubreddit,
-} from "./currentSubredditSlice";
+} from "../../app/currentSubredditSlice";
 
 const Subreddit = ({ subreddit }) => {
   // console.log(subreddit.title);

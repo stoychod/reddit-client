@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "../features/api/apiSlice";
-import searchTermReducer from "../features/Header/searchTermSlice";
-import currentSubredditReducer from "../features/Subreddit/currentSubredditSlice";
+import searchTermReducer from "./searchTermSlice";
+import currentSubredditReducer from "./currentSubredditSlice";
 
 export default configureStore({
   reducer: {

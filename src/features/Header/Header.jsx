@@ -1,7 +1,7 @@
 import { BsReddit } from "react-icons/bs";
 import "./Header.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setSearchTerm, selectSearchTerm } from "./searchTermSlice";
+import { setSearchTerm, selectSearchTerm } from "../../app/searchTermSlice";
 
 const Header = () => {
   const searchTerm = useSelector(selectSearchTerm);
