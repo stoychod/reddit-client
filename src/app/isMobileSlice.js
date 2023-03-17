@@ -4,10 +4,10 @@ export const isMobileSlice = createSlice({
   name: "isMobile",
   initialState: false,
   reducers: {
-    toggleIsMobile: (state, action) => !state,
+    setIsMobile: (state, action) => action.payload,
   },
 });
 
 export const selectIsMobile = (state) => state.isMobile;
-export const { toggleIsMobile } = isMobileSlice.actions;
+export const { setIsMobile } = isMobileSlice.actions;
 export default isMobileSlice.reducer;
