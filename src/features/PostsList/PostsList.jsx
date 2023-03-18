@@ -1,3 +1,4 @@
+import "./PostsList.css";
 import Post from "../Post/Post";
 import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
@@ -38,6 +39,13 @@ const PostsList = () => {
   } else if (isSuccess) {
     if (searchTerm !== "") {
       posts = filterPosts(posts, searchTerm);
+      if (posts.length === 0) {
+        return (
+          <div className="error">
+            <h2>No posts matching "<span>{searchTerm}</span>"</h2>
+          </div>
+        );
+      }
     }
     content = posts.map((post) => <Post key={post.data.id} post={post.data} />);
     // console.log(posts);
@@ -45,7 +53,7 @@ const PostsList = () => {
     //   console.log(element.data)
     // });
   } else if (isError) {
-    content = <div>{error.toString()}</div>;
+    content = <div className="error">{error.toString()}</div>;
   }
 
   // return <Post />;

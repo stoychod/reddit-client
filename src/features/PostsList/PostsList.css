@@ -1,0 +1,11 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 10rem;
+}
+
+.error span {
+  font-weight: bold;
+}
