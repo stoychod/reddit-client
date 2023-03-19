@@ -3,11 +3,17 @@ import "./App.css";
 import Header from "./features/Header/Header";
 import PostsList from "./features/PostsList/PostsList";
 import SubredditsList from "./features/SubredditsList/SubredditsList";
-import { setIsMobile } from "./app/isMobileSlice";
-import { useDispatch } from "react-redux";
+import isMobileSlice, {
+  setIsMobile,
+  selectIsMobile,
+} from "./app/isMobileSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { throttle } from "./utils/utils";
+import { selectSdiebarVisible } from "./app/sidebarVisible";
 
 function App() {
+  const sidebarVisible = useSelector(selectSdiebarVisible);
+  const isMobile = useSelector(selectIsMobile);
   const dispatch = useDispatch();
 
   const handleWindowResize = throttle(() => {
@@ -29,7 +35,9 @@ function App() {
       <main>
         <PostsList />
       </main>
-      <aside>
+      <aside
+        className={sidebarVisible && isMobile ? "sidebar-visible" : null}
+      >
         <SubredditsList />
       </aside>
     </>

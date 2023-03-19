@@ -15,7 +15,14 @@ body {
 }
 
 aside {
-  justify-self: start;
+  display: none;
+}
+
+.sidebar-visible {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 7.2rem;
 }
 
 a {
@@ -29,6 +36,11 @@ a {
 
   main {
     grid-column: 1/4;
+  }
+
+  aside {
+    justify-self: start;
+    display: block;
   }
 }
 
