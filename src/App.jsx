@@ -3,10 +3,8 @@ import "./App.css";
 import Header from "./features/Header/Header";
 import PostsList from "./features/PostsList/PostsList";
 import SubredditsList from "./features/SubredditsList/SubredditsList";
-import isMobileSlice, {
-  setIsMobile,
-  selectIsMobile,
-} from "./app/isMobileSlice";
+import Overlay from "./features/Overlay/Overlay";
+import { setIsMobile, selectIsMobile } from "./app/isMobileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { throttle } from "./utils/utils";
 import { selectSdiebarVisible } from "./app/sidebarVisible";
@@ -34,10 +32,9 @@ function App() {
       </header>
       <main>
         <PostsList />
+        {isMobile && sidebarVisible ? <Overlay /> : null}
       </main>
-      <aside
-        className={sidebarVisible && isMobile ? "sidebar-visible" : null}
-      >
+      <aside className={sidebarVisible && isMobile ? "sidebar-visible" : null}>
         <SubredditsList />
       </aside>
     </>
