@@ -40,3 +40,9 @@ header .reddit-icon {
   max-width: 60rem;
   border-radius: var(--radius);
 }
+
+header .menu-button {
+  display: flex;
+  justify-content: right;
+  margin-left: var(--spacing-2);
+}

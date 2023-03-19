@@ -1,5 +1,6 @@
 import { BsReddit } from "react-icons/bs";
 import "./Header.css";
+import MenuButton from "../Buttons/MenuButton";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearchTerm, selectSearchTerm } from "../../app/searchTermSlice";
 import { debounce } from "../../utils/utils";
@@ -26,7 +27,9 @@ const Header = () => {
           // value={searchTerm}
         />
       </form>
-      <div></div>
+      <div className="menu-button">
+        <MenuButton />
+      </div>
     </>
   );
 };

@@ -71,6 +71,7 @@ const Post = ({ post = {} }) => {
       <div className="post-wrapper">
         <div className="post-votes-container">
           <button
+            type="button"
             onClick={() => onHandleVlote("vote-up")}
             className={
               "icon-action-button post-vote-up" +
@@ -83,6 +84,7 @@ const Post = ({ post = {} }) => {
             {post.score ? formatNumber(post.score) : <Skeleton width="3ch" />}
           </p>
           <button
+            type="button"
             onClick={() => onHandleVlote("vote-down")}
             className={
               "icon-action-button post-vote-down" +
@@ -102,6 +104,7 @@ const Post = ({ post = {} }) => {
           <div className="post-footer">
             <span className="post-comments-container">
               <button
+                type="button"
                 onClick={() => setShowComments(!showComments)}
                 className={
                   "icon-action-button" +
