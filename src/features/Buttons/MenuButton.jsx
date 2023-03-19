@@ -18,7 +18,7 @@ const MenuButton = () => {
       onClick={handleOnClick}
     >
       {sidebarVisible ? (
-        <GrClose className="icon-action-button" />
+        <GrClose className="icon-action" />
       ) : (
         <GrMenu className="icon-action" />
       )}
