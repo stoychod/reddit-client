@@ -29,6 +29,10 @@
   justify-content: center;
 }
 
+.post-video {
+  max-width: 100%;
+}
+
 .post-footer {
   font-size: 1.2rem;
   margin-top: 1.6rem;
