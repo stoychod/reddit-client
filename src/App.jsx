@@ -7,7 +7,7 @@ import Overlay from "./features/Overlay/Overlay";
 import { setIsMobile, selectIsMobile } from "./app/isMobileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { throttle } from "./utils/utils";
-import { selectSdiebarVisible } from "./app/sidebarVisible";
+import { selectSdiebarVisible, setSidedbarVisible } from "./app/sidebarVisible";
 
 function App() {
   const sidebarVisible = useSelector(selectSdiebarVisible);
@@ -15,6 +15,9 @@ function App() {
   const dispatch = useDispatch();
 
   const handleWindowResize = throttle(() => {
+    // setIsMobile expects a number - the window width,
+    // it compares it to the hardcoded mobile treshold in
+    // isMobileSlice.js
     dispatch(setIsMobile(window.innerWidth));
   }, 250);
 
@@ -24,6 +27,13 @@ function App() {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
+
+  // if the window is resized to desktop width, close the sideber
+  useEffect(() => {
+    if (isMobile === false) {
+      dispatch(setSidedbarVisible(false));
+    }
+  }, [isMobile]);
 
   return (
     <>
