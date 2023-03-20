@@ -42,7 +42,7 @@ function App() {
       </header>
       <main>
         <PostsList />
-        {isMobile && sidebarVisible ? <Overlay /> : null}
+        {isMobile &&  <Overlay />}
       </main>
       <aside className={sidebarVisible && isMobile ? "sidebar-visible" : null}>
         <SubredditsList />
