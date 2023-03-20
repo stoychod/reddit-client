@@ -62,8 +62,10 @@ const Post = ({ post = {} }) => {
     // parse markdown and convert it to a react element
     postContent = <ReactMarkdown children={post.selftext} />;
   } else if (post.is_video) {
-    const src = post.secure_media.reddit_video.fallback_url;
+    const src = post.media.reddit_video.fallback_url;
     postContent = <Video src={src} />;
+  } else {
+    postContent = <div className="unsupported-contnet"></div>;
   }
 
   return (
@@ -81,7 +83,7 @@ const Post = ({ post = {} }) => {
             {renderUpVoteIcon()}
           </button>
           <p className={"post-votes-number " + vote}>
-            {post.score ? formatNumber(post.score) : <Skeleton width="3ch" />}
+            {post.score !== undefined  ? formatNumber(post.score) : <Skeleton width="3ch" />}
           </p>
           <button
             type="button"
@@ -113,7 +115,7 @@ const Post = ({ post = {} }) => {
               >
                 <TiMessage className="icon-action" />
               </button>
-              {post.num_comments ? (
+              {post.num_comments !== undefined ? (
                 formatNumber(post.num_comments)
               ) : (
                 <Skeleton width="3ch" />
