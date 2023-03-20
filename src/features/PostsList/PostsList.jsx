@@ -28,13 +28,11 @@ const PostsList = () => {
   let content;
 
   if (isLoading) {
-    // content = "Loading...";
     const loadingPosts = Array(getRandomInt(3, 7))
       .fill(0)
       .map((item, index) => {
         return <Post key={index} />;
       });
-    // console.log(loadingPosts);
     return loadingPosts;
   } else if (isSuccess) {
     if (searchTerm !== "") {
@@ -48,15 +46,10 @@ const PostsList = () => {
       }
     }
     content = posts.map((post) => <Post key={post.data.id} post={post.data} />);
-    // console.log(posts);
-    // posts.forEach(element => {
-    //   console.log(element.data)
-    // });
   } else if (isError) {
     content = <div className="error">{error.toString()}</div>;
   }
 
-  // return <Post />;
   return content;
 };
 
