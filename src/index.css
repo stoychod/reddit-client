@@ -42,6 +42,10 @@ a:hover {
     grid-template-columns:repeat(4, 1fr);
   }
 
+  header {
+    padding: 0 var(--spacing-5);
+  }
+
   main {
     grid-column: 1/4;
   }

@@ -4,7 +4,7 @@ header {
   height: 6.4rem;
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-5);
+  padding: 0 var(--spacing-3);
   position: sticky;
   top: 0px;
   grid-column: 1/-1;
