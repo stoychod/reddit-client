@@ -1,5 +1,4 @@
 header {
-  color: var(--color-branding);
   background: var(--color-foreground);
   box-shadow: var(--box-shadow);
   height: 6.4rem;
@@ -19,11 +18,13 @@ header .reddit-logo {
   display: flex;
   align-items: center;
   margin-right: var(--spacing-2);
+  font-weight: bold;
 }
  
 header .reddit-icon {
   font-size: 3.2rem;
   margin-right: var(--spacing-1);
+  color: var(--color-branding);
 }
 
 .search-form {
