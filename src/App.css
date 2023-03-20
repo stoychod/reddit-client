@@ -1,13 +1,14 @@
 :root {
-  --color-background: #fcfcfc;
+  --color-background: #eaeaf0;
   --color-background-secondary: #f3f3f3;
+  --color-background-votes: #f9f9f9;
   --color-foreground: #ffffff;
   --color-border: #e6e6e6;
   --color-text-header: #444444;
   --color-text-body: #6f6f6f;
   --color-text-secondary: #717171;
   --color-text-invert: #ffffff;
-  --color-text-link: #4ec3f5;
+  --color-text-link: #0969AA;
   --color-branding: #3d5af1;
   --color-branding-transparent: #3d5af140;
 

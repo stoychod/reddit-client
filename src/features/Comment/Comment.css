@@ -1,9 +1,9 @@
 .comment {
   background: var(--color-background);
-  margin: var(--spacing-1) 0;
+  margin: var(--spacing-1);
   padding: var(--spacing-2);
   transition: box-shadow 0.1s ease-in;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius);
 }
 
 .comment:hover {
