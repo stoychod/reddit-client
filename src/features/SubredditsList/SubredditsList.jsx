@@ -19,7 +19,7 @@ const SubredditsList = () => {
 
   return (
     <div className="subreddits-list">
-      <h2>Subreddists</h2>
+      <h2>Subreddits</h2>
       <ul>
         {subreddits}
       </ul>
