@@ -17,18 +17,24 @@ body {
 }
 
 aside {
-  display: none;
+position: fixed;
+  right: 0;
+  max-width: 0;
+  top: 6.4rem;
+  transition: 500ms;
 }
 
 .sidebar-visible {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 6.4rem;
+  max-width: 100%;
 }
 
 a {
   color: var(--color-text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (min-width: 680px) {
@@ -43,6 +49,8 @@ a {
   aside {
     justify-self: start;
     display: block;
+    position: static;
+    max-width: 100%;
   }
 }
 
