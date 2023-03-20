@@ -4,11 +4,22 @@ import {
   selectCurrntSubreddit,
   setCurrentSubreddit,
 } from "../../app/currentSubredditSlice";
+import {
+  selectSdiebarVisible,
+  setSidedbarVisible,
+} from "../../app/sidebarVisible";
 
 const Subreddit = ({ subreddit }) => {
-  // console.log(subreddit.title);
   const currentSubreddit = useSelector(selectCurrntSubreddit);
+  const sidebarVisible = useSelector(selectSdiebarVisible);
   const dispatch = useDispatch();
+
+  const handleOnClick = () => {
+    dispatch(setCurrentSubreddit(subreddit.display_name));
+    if (sidebarVisible) {
+      dispatch(setSidedbarVisible(false));
+    }
+  };
 
   return (
     <li
@@ -16,10 +27,7 @@ const Subreddit = ({ subreddit }) => {
         currentSubreddit === subreddit.display_name ? "current-subreddit" : ""
       }
     >
-      <button
-        onClick={() => dispatch(setCurrentSubreddit(subreddit.display_name))}
-        type="button"
-      >
+      <button onClick={handleOnClick} type="button">
         <img
           className="subreddit-icon"
           src={
