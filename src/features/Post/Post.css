@@ -33,6 +33,11 @@
   max-width: 100%;
 }
 
+.post-text {
+  line-height: 1.5;
+  margin: 0 var(--spacing-1);
+}
+
 .post-footer {
   font-size: 1.2rem;
   margin: var(--spacing-1);

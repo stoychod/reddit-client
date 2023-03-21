@@ -60,7 +60,11 @@ const Post = ({ post = {} }) => {
   } else if (post.selftext) {
     // post content is markdown formated text
     // parse markdown and convert it to a react element
-    postContent = <ReactMarkdown children={post.selftext} />;
+    postContent = (
+      <div className="post-text">
+        <ReactMarkdown children={post.selftext} />
+      </div>
+    );
   } else if (post.is_video) {
     const src = post.media.reddit_video.fallback_url;
     postContent = <Video src={src} />;
@@ -83,7 +87,11 @@ const Post = ({ post = {} }) => {
             {renderUpVoteIcon()}
           </button>
           <p className={"post-votes-number " + vote}>
-            {post.score !== undefined  ? formatNumber(post.score) : <Skeleton width="3ch" />}
+            {post.score !== undefined ? (
+              formatNumber(post.score)
+            ) : (
+              <Skeleton width="3ch" />
+            )}
           </p>
           <button
             type="button"
