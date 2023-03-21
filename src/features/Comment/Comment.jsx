@@ -21,7 +21,9 @@ const Comment = ({ comment = {} }) => {
         </p>
       </div>
       {comment.body ? (
-        <ReactMarkdown children={comment.body} />
+        <div className="comment-body">
+          <ReactMarkdown children={comment.body} />
+        </div>
       ) : (
         <Skeleton count={getRandomInt(0, 5) + Math.random()} />
       )}

@@ -16,6 +16,10 @@
   align-items: center;
 }
 
+.comment-body {
+  line-height: 1.5;
+}
+
 .comment-created-time {
   margin-left: auto;
   font-style: italic;
