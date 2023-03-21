@@ -1,7 +1,7 @@
 const Image = ({ url }) => {
   return (
     <div className="post-image-container">
-      <img src={url} className="post-image" />
+      <img src={url} className="post-image"  alt="post image"/>
     </div>
   )
 }

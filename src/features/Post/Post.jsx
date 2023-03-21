@@ -73,7 +73,7 @@ const Post = ({ post = {} }) => {
   }
 
   return (
-    <div className="post">
+    <article className="post">
       <div className="post-wrapper">
         <div className="post-votes-container">
           <button
@@ -147,7 +147,7 @@ const Post = ({ post = {} }) => {
           {showComments && <CommentsList permalink={post.permalink} />}
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

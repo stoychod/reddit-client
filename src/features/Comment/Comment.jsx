@@ -7,7 +7,7 @@ import { getRandomInt } from "../../utils/utils";
 
 const Comment = ({ comment = {} }) => {
   return (
-    <div className="comment">
+    <article className="comment">
       <div className="comment-metadata">
         <p className="comment-author">
           {comment.author || <Skeleton width={`${getRandomInt(50, 150)}px`} />}
@@ -16,8 +16,8 @@ const Comment = ({ comment = {} }) => {
           {comment.created_utc ? (
             <ReactTimeAgo date={comment.created_utc * 1000} locale="en-US" />
           ) : (
-            <Skeleton width={`${getRandomInt(9, 14)}ch`} />
-          )}
+              <Skeleton width={`${getRandomInt(9, 14)}ch`} />
+            )}
         </p>
       </div>
       {comment.body ? (
@@ -25,9 +25,9 @@ const Comment = ({ comment = {} }) => {
           <ReactMarkdown children={comment.body} />
         </div>
       ) : (
-        <Skeleton count={getRandomInt(0, 5) + Math.random()} />
-      )}
-    </div>
+          <Skeleton count={getRandomInt(0, 5) + Math.random()} />
+        )}
+    </article>
   );
 };
 

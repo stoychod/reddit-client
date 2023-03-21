@@ -28,7 +28,7 @@ const CommentsList = ({ permalink }) => {
     comments = <div>{error.toString()}</div>;
   }
 
-  return comments;
+  return <section>{comments}</section>;
 };
 
 export default CommentsList;
