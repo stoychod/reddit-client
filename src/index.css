@@ -37,7 +37,7 @@ a:hover {
   text-decoration: underline;
 }
 
-@media only screen and (min-width: 680px) {
+@media only screen and (min-width: 42.5rem) {
   #root {
     grid-template-columns:repeat(4, 1fr);
   }
@@ -58,7 +58,7 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 75rem) {
   #root {
     grid-template-columns:repeat(5, 1fr);
   }
@@ -68,7 +68,7 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 100rem) {
   #root {
     grid-template-columns:repeat(7, 1fr);
   }
@@ -78,7 +78,7 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 2400px) {
+@media only screen and (min-width: 150rem) {
   #root {
     grid-template-columns:repeat(9, 1fr);
   }
