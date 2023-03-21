@@ -84,27 +84,27 @@
 }
 
 .post-votes-number.vote-up {
-  color: var(--color-success) !important;
+  color: var(--color-success);
 }
 
 .post-votes-number.vote-down {
-  color: var(--color-alert) !important;
+  color: var(--color-alert);
 }
 
 .post-vote-up:hover {
-  color: var(--color-success) !important;
+  color: var(--color-success);
 }
 
 .post-vote-up.active {
-  color: var(--color-success) !important;
+  color: var(--color-success);
 }
 
 .post-vote-down:hover {
-  color: var(--color-alert) !important;
+  color: var(--color-alert);
 }
 
 .post-vote-down.active {
-  color: var(--color-alert) !important;
+  color: var(--color-alert);
 }
 
 .icon-action-button:hover {
