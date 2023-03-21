@@ -34,12 +34,12 @@ background: none;
 }
 
 .current-subreddit button {
-  color: var(--color-branding) !important;
+  color: var(--color-accent);
 }
 
 .current-subreddit {
-  border-left: 5px solid var(--color-branding);
-  background: var(--color-branding-transparent);
+  border-left: 5px solid var(--color-accent);
+  background: var(--color-accent-transparent);
 }
 
 .subreddits-list button:hover {

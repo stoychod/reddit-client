@@ -24,7 +24,7 @@ header .reddit-logo {
 header .reddit-icon {
   font-size: 3.2rem;
   margin-right: var(--spacing-1);
-  color: var(--color-branding);
+  color: var(--color-accent);
 }
 
 .search-form {
