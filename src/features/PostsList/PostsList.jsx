@@ -19,8 +19,9 @@ const PostsList = () => {
   const { data, isFetching, isSuccess, isError, error } =
     useGetPostsQuery(currentSubreddit);
 
+  let postsData;
+
   if (isFetching) {
-    console.log("Loading posts");
     const loadingPosts = Array(getRandomInt(3, 7))
       .fill(0)
       .map((item, index) => {
@@ -29,6 +30,7 @@ const PostsList = () => {
     return loadingPosts;
   } else if (isSuccess) {
     if (searchTerm !== "") {
+      // console.log(data);
       const filteredPosts = filterPosts(data, searchTerm);
       if (filteredPosts.length === 0) {
         return (
@@ -39,10 +41,12 @@ const PostsList = () => {
           </div>
         );
       }
-      return filteredPosts;
+      postsData = filteredPosts;
+    } else {
+      postsData = data;
     }
 
-    const posts = data.map((post) => (
+    const posts = postsData.map((post) => (
       <Post key={post.data.id} post={post.data} />
     ));
 

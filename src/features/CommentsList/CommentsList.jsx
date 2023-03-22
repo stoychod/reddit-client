@@ -9,7 +9,6 @@ const CommentsList = ({ permalink }) => {
   let comments;
 
   if (isFetching) {
-    console.log("Loading comments");
     // comments = "Loading...";
     const loadingComments = Array(getRandomInt(3, 15))
       .fill(0)
