@@ -3,12 +3,13 @@ import Comment from "../Comment/Comment";
 import { getRandomInt } from "../../utils/utils";
 
 const CommentsList = ({ permalink }) => {
-  const { data, isLoading, isSuccess, isError, error } =
+  const { data, isFetching, isSuccess, isError, error } =
     useGetCommentsQuery(permalink);
 
   let comments;
 
-  if (isLoading) {
+  if (isFetching) {
+    console.log("Loading comments");
     // comments = "Loading...";
     const loadingComments = Array(getRandomInt(3, 15))
       .fill(0)

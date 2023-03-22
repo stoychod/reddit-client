@@ -6,28 +6,21 @@ import { selectSearchTerm } from "../../app/searchTermSlice";
 import { selectCurrntSubreddit } from "../../app/currentSubredditSlice";
 import { getRandomInt } from "../../utils/utils";
 
+const filterPosts = (posts, searchTerm) => {
+  return posts.filter((post) => {
+    return post.data.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+};
+
 const PostsList = () => {
   const currentSubreddit = useSelector(selectCurrntSubreddit);
-
-  let {
-    data: posts,
-    isLoading,
-    isSuccess,
-    isError,
-    error,
-  } = useGetPostsQuery(currentSubreddit);
-
   const searchTerm = useSelector(selectSearchTerm);
 
-  const filterPosts = (posts, searchTerm) => {
-    return posts.filter((post) => {
-      return post.data.title.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-  };
+  const { data, isFetching, isSuccess, isError, error } =
+    useGetPostsQuery(currentSubreddit);
 
-  let content;
-
-  if (isLoading) {
+  if (isFetching) {
+    console.log("Loading posts");
     const loadingPosts = Array(getRandomInt(3, 7))
       .fill(0)
       .map((item, index) => {
@@ -36,21 +29,27 @@ const PostsList = () => {
     return loadingPosts;
   } else if (isSuccess) {
     if (searchTerm !== "") {
-      posts = filterPosts(posts, searchTerm);
-      if (posts.length === 0) {
+      const filteredPosts = filterPosts(data, searchTerm);
+      if (filteredPosts.length === 0) {
         return (
           <div className="error">
-            <h2>No posts matching "<span>{searchTerm}</span>"</h2>
+            <h2>
+              No posts matching "<span>{searchTerm}</span>"
+            </h2>
           </div>
         );
       }
+      return filteredPosts;
     }
-    content = posts.map((post) => <Post key={post.data.id} post={post.data} />);
+
+    const posts = data.map((post) => (
+      <Post key={post.data.id} post={post.data} />
+    ));
+
+    return posts;
   } else if (isError) {
     content = <div className="error">{error.toString()}</div>;
   }
-
-  return content;
 };
 
 export default PostsList;
