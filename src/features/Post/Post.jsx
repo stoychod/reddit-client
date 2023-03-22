@@ -68,7 +68,8 @@ const Post = ({ post = {} }) => {
   } else if (post.is_video) {
     const src = post.media.reddit_video.fallback_url;
     postContent = <Video src={src} />;
-  } else {
+    // anything else is currently not supported
+  } else if (post.id) {
     postContent = <div className="unsupported-contnet"></div>;
   }
 
