@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectSdiebarVisible } from "../../app/sidebarVisible";
+import { selectSdiebarVisible } from "../../app/sidebarVisibleSlice";
 import "./Overlay.css";
 
 const Overlay = () => {

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectSdiebarVisible,
   setSidedbarVisible,
-} from "../../app/sidebarVisible";
+} from "../../app/sidebarVisibleSlice";
 
 const MenuButton = () => {
   const sidebarVisible = useSelector(selectSdiebarVisible);

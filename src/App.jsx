@@ -7,7 +7,10 @@ import Overlay from "./features/Overlay/Overlay";
 import { setIsMobile, selectIsMobile } from "./app/isMobileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { throttle } from "./utils/utils";
-import { selectSdiebarVisible, setSidedbarVisible } from "./app/sidebarVisible";
+import {
+  selectSdiebarVisible,
+  setSidedbarVisible,
+} from "./app/sidebarVisibleSlice";
 
 function App() {
   const sidebarVisible = useSelector(selectSdiebarVisible);

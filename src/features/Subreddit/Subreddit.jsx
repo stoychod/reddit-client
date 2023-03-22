@@ -7,7 +7,7 @@ import {
 import {
   selectSdiebarVisible,
   setSidedbarVisible,
-} from "../../app/sidebarVisible";
+} from "../../app/sidebarVisibleSlice";
 
 const Subreddit = ({ subreddit }) => {
   const currentSubreddit = useSelector(selectCurrntSubreddit);

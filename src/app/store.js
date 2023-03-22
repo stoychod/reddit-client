@@ -3,7 +3,7 @@ import { apiSlice } from "../features/api/apiSlice";
 import searchTermReducer from "./searchTermSlice";
 import currentSubredditReducer from "./currentSubredditSlice";
 import isMobileReducer from "./isMobileSlice";
-import sidebarVisibleReducer from "./sidebarVisible";
+import sidebarVisibleReducer from "./sidebarVisibleSlice";
 
 export default configureStore({
   reducer: {
