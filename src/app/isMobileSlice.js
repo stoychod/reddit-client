@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const mobileWindowWidth = 680;
+const mobileWindowWidth = 768;
 const initialState = window.innerWidth <= mobileWindowWidth;
 
 export const isMobileSlice = createSlice({
