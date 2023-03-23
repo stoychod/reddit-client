@@ -31,6 +31,15 @@ function App() {
     };
   }, []);
 
+  // prevent body from scrolling when sidebar is visible
+  useEffect(() => {
+    if (sidebarVisible) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [sidebarVisible]);
+
   // if the window is resized to desktop width, close the sideber
   useEffect(() => {
     if (isMobile === false) {
@@ -45,7 +54,7 @@ function App() {
       </header>
       <main>
         <PostsList />
-        {isMobile &&  <Overlay />}
+        {isMobile && <Overlay />}
       </main>
       <aside className={sidebarVisible && isMobile ? "sidebar-visible" : null}>
         <SubredditsList />

@@ -21,11 +21,18 @@ position: fixed;
   right: 0;
   max-width: 0;
   top: 6.4rem;
+  bottom: 0;
+  overflow-y: scroll;
   transition: 500ms;
 }
 
 .sidebar-visible {
   max-width: 100%;
+
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 a {
