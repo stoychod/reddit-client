@@ -62,6 +62,7 @@ a:hover {
     display: block;
     position: static;
     max-width: 100%;
+    overflow: hidden;
   }
 }
 
