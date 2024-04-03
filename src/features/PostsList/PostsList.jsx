@@ -3,7 +3,7 @@ import Post from "../Post/Post";
 import { useGetPostsQuery } from "../api/apiSlice";
 import { useSelector } from "react-redux";
 import { selectSearchTerm } from "../../app/searchTermSlice";
-import { selectCurrntSubreddit } from "../../app/currentSubredditSlice";
+import { selectCurrentSubreddit } from "../../app/currentSubredditSlice";
 import { getRandomInt } from "../../utils/utils";
 
 const filterPosts = (posts, searchTerm) => {
@@ -13,7 +13,7 @@ const filterPosts = (posts, searchTerm) => {
 };
 
 const PostsList = () => {
-  const currentSubreddit = useSelector(selectCurrntSubreddit);
+  const currentSubreddit = useSelector(selectCurrentSubreddit);
   const searchTerm = useSelector(selectSearchTerm);
 
   const { data, isFetching, isSuccess, isError, error } =

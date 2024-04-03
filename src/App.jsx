@@ -8,12 +8,12 @@ import { setIsMobile, selectIsMobile } from "./app/isMobileSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { throttle } from "./utils/utils";
 import {
-  selectSdiebarVisible,
-  setSidedbarVisible,
+  selectSidebarVisible,
+  setSidebarVisible,
 } from "./app/sidebarVisibleSlice";
 
 function App() {
-  const sidebarVisible = useSelector(selectSdiebarVisible);
+  const sidebarVisible = useSelector(selectSidebarVisible);
   const isMobile = useSelector(selectIsMobile);
   const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ function App() {
   // if the window is resized to desktop width, close the sideber
   useEffect(() => {
     if (isMobile === false) {
-      dispatch(setSidedbarVisible(false));
+      dispatch(setSidebarVisible(false));
     }
   }, [isMobile]);
 

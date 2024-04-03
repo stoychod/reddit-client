@@ -1,23 +1,23 @@
 import "./Subreddit.css";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectCurrntSubreddit,
+  selectCurrentSubreddit,
   setCurrentSubreddit,
 } from "../../app/currentSubredditSlice";
 import {
-  selectSdiebarVisible,
-  setSidedbarVisible,
+  selectSidebarVisible,
+  setSidebarVisible,
 } from "../../app/sidebarVisibleSlice";
 
 const Subreddit = ({ subreddit }) => {
-  const currentSubreddit = useSelector(selectCurrntSubreddit);
-  const sidebarVisible = useSelector(selectSdiebarVisible);
+  const currentSubreddit = useSelector(selectCurrentSubreddit);
+  const sidebarVisible = useSelector(selectSidebarVisible);
   const dispatch = useDispatch();
 
   const handleOnClick = () => {
     dispatch(setCurrentSubreddit(subreddit.display_name));
     if (sidebarVisible) {
-      dispatch(setSidedbarVisible(false));
+      dispatch(setSidebarVisible(false));
     }
   };
 

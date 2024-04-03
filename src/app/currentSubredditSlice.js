@@ -9,7 +9,7 @@ const currentSubredditSlice = createSlice({
   },
 });
 
-export const selectCurrntSubreddit = (state) => state.currentSubreddit;
+export const selectCurrentSubreddit = (state) => state.currentSubreddit;
 export const { getCurrentSubreddit, setCurrentSubreddit } =
   currentSubredditSlice.actions;
 export default currentSubredditSlice.reducer;

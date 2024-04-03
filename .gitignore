@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # dev
-.eslintrc.json
+# .eslintrc.json

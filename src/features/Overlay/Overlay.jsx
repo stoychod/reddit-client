@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectSdiebarVisible } from "../../app/sidebarVisibleSlice";
+import { selectSidebarVisible } from "../../app/sidebarVisibleSlice";
 import "./Overlay.css";
 
 const Overlay = () => {
-  const sidebarVisible = useSelector(selectSdiebarVisible);
+  const sidebarVisible = useSelector(selectSidebarVisible);
   return (
     <div
       className={"overlay" + (sidebarVisible ? " overlay-active" : "")}
