@@ -1,0 +1,5 @@
+# reddit-client
+## A minimal Reddit client application
+
+Application was created using modern `react` ( functional components with `hooks` ) and `redux` ( `react-redux`, `redux-toolkit`, and `RTK Query` ).
+It has a responsive design and adapts to the screen size. In mobile view the sidebar hides and can be toggled using the menu button. On first load it presents the first page of a preselected Subreddit. In the sidebar there is a selection of Subreddits topics which the user can choose from. The user can vote up or down using the *arrow* buttons on the left of the post. On loading, comments of each post are hidden and can be viewed using the *message* button at the bottom of each post. Loaded posts can be filtered by title using the search bar at the top. A loading animation is presented on loading the posts and comments, implemented with `react-loading-skeleton`. The application was built using the *unofficial* Reddit API as it doesn't require authentication and thus simplifies implementation. The app can be viewed live on **Netlify** - [minimal-reddit-client](https://minimal-reddit-client.netlify.app/)
